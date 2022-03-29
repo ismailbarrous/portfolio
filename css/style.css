@@ -839,9 +839,6 @@ header .container{
 .project:hover::before{
     opacity: 1;
 }
-.project:hover .thumbnail img{
-        transform: scale(1.1);
-}
 .project-section{
     position: absolute;
     width: 100%;
