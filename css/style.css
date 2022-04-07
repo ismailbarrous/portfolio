@@ -232,7 +232,7 @@ header .container{
     transition: 0.5s;
 }
 .social a{
-    color: inherit;
+    color: white;
 }
 .socials .social:hover{
     background: white;

@@ -77,7 +77,7 @@ $(window).on("load", function() {
         }
         if((y + h) > aboutmeimg.position().top + 300){
           setTimeout(function(){$('.d-content').addClass('animate__animated animate__fadeInLeft');
-        $('.about-me').addClass('visited')},300);
+        $('.about-me').addClass('visited'); localStorage.setItem('about-me','visited');},300);
         }
       }
     $.fn.skills = function() {
@@ -94,7 +94,7 @@ $(window).on("load", function() {
           $('.skill svg').each(function(e,el){
             var percentage = 420 - (420 * $(el).parent().attr('data-percentage')) / 100;
             setTimeout(function(){$(el).children(':nth-child(2)').css('stroke-dashoffset','-' + percentage)},(e+1) * 700);
-            $(el).before('<div class="percentage">' + (100 - $(el).parent().attr('data-percentage'))  + '%</div>')
+            $(el).before('<div class="percentage">' + (100 - $(el).parent().attr('data-percentage'))  + '%</div>');
           });
           setTimeout(function(){$('.nav').css('pointer-events','all')},2000);
         });
@@ -115,7 +115,7 @@ $(window).on("load", function() {
     },500);
     };
     $.fn.projectscroll = function () {
-        $('.portfolio .project').each(function(i,el){         
+        $('.project').each(function(i,el){         
             if(window.matchMedia( "(max-width: 678px)" ).matches){
               if((y+h) > $(el).position().top + 15){
                  $(el).addClass('animate__animated animate__zoomInLeft').attr('style','opacity:1!important;');
@@ -128,7 +128,8 @@ $(window).on("load", function() {
           }
       });
         setTimeout(function(){
-          $('.portfolio').addClass('visited')
+          $('.portfolio').addClass('visited');
+          localStorage.setItem('portfolio','visited');
         },3000);
     }
     $.fn.portfolio = function () {
@@ -150,7 +151,7 @@ $(window).on("load", function() {
       $('.nav').css('pointer-events','none');
       $.fn.aboutmefadeout();
       $.fn.portfoliofadeout();
-        if($('.landing').hasClass('visited')){
+        if($('.landing').hasClass('visited') || localStorage.getItem('home') == 'visited'){
           $('.landing *').removeClass(animations);
           $('.p-social').add('.text').add('.landing-img').add('.landing svg').css('opacity','1');
           setTimeout(function(){$('.landing').fadeIn(1000);},1000);
@@ -173,6 +174,7 @@ $(window).on("load", function() {
             }
           },0);
           $('.landing').addClass('visited');
+          localStorage.setItem('home','visited');
           }, 500);
       }
   });
@@ -185,8 +187,16 @@ $(window).on("load", function() {
       $('.about-me *').removeClass(animations);
       $.fn.landingfadeout();
       $.fn.portfoliofadeout();
-      if($('.about-me').hasClass('visited')){
+      if($('.about-me').hasClass('visited') || localStorage.getItem('about-me') == 'visited'){
         $('.about-me').css('display','none');
+        $('.framework').each(function(a,xl){
+          $(xl).children('.progress-bar').children('.progress').css('width',$(xl).children('.progress-bar').children('.progress').attr('data-progress'));
+        });
+        $('.skill svg').each(function(e,el){
+            var percentage = 420 - (420 * $(el).parent().attr('data-percentage')) / 100;
+            $(el).children(':nth-child(2)').css('stroke-dashoffset','-' + percentage);
+            $(el).before('<div class="percentage">' + (100 - $(el).parent().attr('data-percentage'))  + '%</div>');
+          });
         $('.about-me *').css('opacity','1');
         setTimeout(function(){$('.about-me').fadeIn(1000);},1000);
         $('.nav').css('pointer-events','all');
@@ -202,17 +212,16 @@ $(window).on("load", function() {
       $('.portfolio *').removeClass(animations);
       $.fn.landingfadeout();
       $.fn.aboutmefadeout();
-      $('.portfolio').fadeOut(100);
       $('html, body').animate({
         'scrollTop' : $(".portfolio").position().top
       });
-      if($('.portfolio').hasClass('visited')){
+      if($('.portfolio').hasClass('visited') || localStorage.getItem('portfolio') == 'visited'){
         $('.portfolio *').removeClass(animations).css('opacity','1');
         setTimeout(function(){$('.portfolio').fadeIn(1000);},1000);
         $('.nav').css('pointer-events','all');
       }else{
         $('.portfolio').fadeIn();
-        setTimeout(function(){$.fn.portfolio()},1000);
+        setTimeout(function(){$.fn.portfolio()},1500);
       }
     });
     $('.moon').add('.p-light').click(function(){
