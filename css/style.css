@@ -46,7 +46,7 @@ header{
     width: 100%;
     bottom: 0;
     background: #eee;
-    height: 10vh;
+    height: 4rem;
     text-align: center;
         display: flex;
     align-items: center;
@@ -98,6 +98,9 @@ header .container{
     border-radius: 50%;
     display: none;
     top: 0;
+}
+.phone-theme ion-icon, .themes .t{
+    cursor: pointer;
 }
 .p-moon{
     position: absolute;
@@ -228,8 +231,13 @@ header .container{
     border-radius: 50%;
     transition: 0.5s;
 }
+.social a{
+    color: inherit;
+}
 .socials .social:hover{
     background: white;
+}
+.social:hover a{
     color: var(--clr);
 }
 
@@ -254,6 +262,9 @@ header .container{
     position: absolute;
     color: white;
     opacity: 0;
+}
+.p-social a{
+    color: white;
 }
 .p-social.f{
     top: 15%;
@@ -468,6 +479,7 @@ header .container{
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
+    padding-bottom: 5rem;
 }
 .skills{
         display: flex;
@@ -762,6 +774,7 @@ header .container{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
     gap: 2rem;
+    padding-bottom: 5rem;
 }
 .portfolio img{
     max-width: 100%;
@@ -944,6 +957,8 @@ header .container{
     .project-section{
         margin: 0 auto;
         top: 50%;
+        position: fixed;
+        padding: 2rem 0.5rem;
     }
 }
 @media(max-width: 545px){
