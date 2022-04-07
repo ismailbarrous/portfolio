@@ -863,7 +863,7 @@ header .container{
 }
 .active-img{
     border: 4px var(--txt-clr) solid;
-    pointer-events: none;
+    pointer-events: none!important;
 }
 .img-bg{
         background: rgb(128 128 128 / 50%);

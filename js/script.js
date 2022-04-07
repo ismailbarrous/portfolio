@@ -3,6 +3,10 @@ $(window).on("load", function() {
           $('.light').add('.p-moon').removeClass('active-theme');
           $('.moon').add('.p-light').addClass('active-theme'); 
           $('.p-moon').add('.p-light').removeClass(animations);
+          $('.p-light').addClass('animate__animated animate__fadeOutUp');
+          $('.p-moon').css('top','0');
+          $('.p-light').css('opacity','0');
+          $('.p-moon').addClass('animate__animated animate__fadeInDown');
           $('body').css('background', '#3d3c4c');
           $(':root').css('--txt-clr','white');
           $('.project').css('box-shadow','0px 7px 12px rgb(255 255 255 / 50%)');
